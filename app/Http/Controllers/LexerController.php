@@ -13,6 +13,8 @@ class LexerController extends Controller
 
         $file = file(__FILE__);
 
+        $var = "text";
+
         $lexer = new Lexer();
 
         $result = $lexer->lscan($file);

@@ -47,16 +47,26 @@ class Lexer extends AbstractLexer
     {
         $types = config('global.PHP_PARSER_TYPE_TOKENS');
 
-        $varType = '/^(\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/';
-
-        if(preg_match($varType, $value)){
-            return token_name($types['var']);
-        }
+        $varTypeRegex = '/^(\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/';
+        $stringRegex  = '/^(^[\'|"][a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/';
+        $literalRegex  = '/^([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/';
 
         if(key_exists($value, $types)) {
             $type = $types[$value];
 
-            return is_numeric($type) ? token_name($type) : $type;
+            return  $this->getTokenName($type);
+        }
+
+        if(preg_match($stringRegex, $value)){
+            return $this->getTokenName($types['string']);
+        }
+
+        if(preg_match($varTypeRegex, $value)){
+            return $this->getTokenName($types['var']);
+        }
+
+        if(preg_match($literalRegex, $value)){
+            return $this->getTokenName($types['literal']);
         }
 
         return 'Undefined';
@@ -70,5 +80,10 @@ class Lexer extends AbstractLexer
     protected function getNonCatchablePatterns()
     {
         return[];
+    }
+
+    private function getTokenName($type)
+    {
+        return is_numeric($type) ? token_name($type) : $type;
     }
 }
