@@ -11,7 +11,7 @@ class TVarListener
 {
     public function handle(TVarEvent $event)
     {
-        $standard = new Variable($event->currentLine, $event->sourceLines);
+        $standard = new Variable($event->currentLine, $event->sourceLines, $event->position);
         return $standard->process();
     }
 }

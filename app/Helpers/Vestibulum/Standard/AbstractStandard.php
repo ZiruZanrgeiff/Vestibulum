@@ -2,52 +2,42 @@
 
 namespace Vestibulum\Helpers\Vestibulum\Standard;
 
+use Vestibulum\Helpers\Vestibulum\LexerResource;
+
 abstract class AbstractStandard
 {
-    protected $currentLine;
-
-    protected $sourceLines;
-
     protected $position = 0;
 
-    protected $lookahead;
+    protected $errors = array();
 
-    private $tokens = array();
-    protected $errors  = array();
+    protected $lexerResource = null;
 
-    public function __construct( $currentLine, array $sourceLines )
+    public function __construct( $currentLine, $position, array $sourceLines )
     {
         $this->currentLine = $currentLine;
-        $this->sourceLines = $sourceLines;
+        $this->position = $position;
+        $this->lexerResource = new LexerResource($sourceLines);
 
-        $this->setCurrentLine();
+        $this->_init();
     }
 
-    protected function nextToken()
+    private function _init()
     {
-        $this->token = $this->lookahead;
-        $this->lookahead = (isset($this->tokens[$this->position]))
-            ? $this->tokens[$this->position++] : null;
+        $lexer = $this->lexerResource;
+        $lexer->setCurrentLine($this->currentLine);
+        $lexer->getTokenByPosition($this->position);
+    }
 
-        return $this->lookahead !== null;
+    protected function getErrorMessage($line, $position, $msg)
+    {
+        return sprintf(
+            'Line: %s; Position: %s; %s',
+            $line,
+            $position,
+            $msg
+        );
     }
 
     public abstract function process();
 
-    protected function setCurrentLine()
-    {
-        $this->tokens = $this->sourceLines[$this->currentLine];
-    }
-
-    protected function skipUntil($type)
-    {
-        while ($this->lookahead !== null && $this->lookahead['type'] !== $type) {
-            $this->nextToken();
-        }
-    }
-
-    public function getErrors()
-    {
-        return $this->errors;
-    }
 }

@@ -64,20 +64,12 @@ class VestibulumManager
             foreach ($line as $tokens) {
 
                 if (key_exists($tokens['type'], $events)) {
-
-                    $ress = \Event::fire(new $events[$tokens['type']]($key, $this->sourceLines));
-
-                    if(is_array($ress[0])){
-                        foreach ($ress[0] as $item) {
-                            $eventResponses[] = $item;
-                        }
-                    }else{
-                        $eventResponses[] = $ress[0];
-                    }
+                    $ress = \Event::fire(new $events[$tokens['type']]($key, $tokens['position'], $this->sourceLines));
+                    $eventResponses[] = $ress;
                 }
             }
 
-        return array_unique($eventResponses);
+        return $eventResponses;
     }
 
     private function startExec()

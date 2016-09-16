@@ -13,10 +13,11 @@ class TVarEvent
 {
     use InteractsWithSockets, SerializesModels;
 
-    public function __construct( $currentLine,  $sourceLines )
+    public function __construct( $currentLine,  $sourceLines, $position )
     {
         $this->currentLine = $currentLine;
         $this->sourceLines = $sourceLines;
+        $this->position = $position;
     }
 
     /**

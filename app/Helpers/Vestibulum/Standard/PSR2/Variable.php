@@ -9,18 +9,27 @@ class Variable extends AbstractStandard
 
     public function process()
     {
-        while ($this->nextToken()) {
-            $this->skipUntil('T_VAR');
+        $lexer = $this->lexerResource;
+        $token = $lexer->lookahead;
 
-            $value = $this->lookahead['value'];
+        $value = $token['value'];
 
-            $line = $this->currentLine +1;
+        if (preg_match('/\$[A-Z][a-z]+/', $value)) {
+            $this->errors[] =
+                $this->getErrorMessage(
+                    $lexer->getCurrentLine(),
+                    $lexer->lookahead['position'],
+                    'The variables should not begin with uppercase letter.'
+                );
+        }
 
-            if (preg_match('/\$[A-Z][a-z]+/', $value)) {
-                $this->errors[] =
-                    "Line: {$line}; Position: {$this->lookahead['position']}; The variables should not begin with uppercase letter.";
-
-            }
+        if(preg_match('/[_]+/', $value)){
+            $this->errors[] =
+                $this->getErrorMessage(
+                    $lexer->getCurrentLine(),
+                    $lexer->lookahead['position'],
+                    'The variables should not have underscore.'
+                );
         }
 
         return $this->errors;

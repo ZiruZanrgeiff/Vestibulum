@@ -4,20 +4,16 @@ namespace Vestibulum\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
 use Vestibulum\Helpers\Vestibulum\VestibulumManager;
 
 class LexerController extends Controller
 {
     public function index()
     {
-        $Tect = null;
-        $file = file(__FILE__);
 
+        $file = file(storage_path('app/public/arquivo.php'));
 
-        $Um = null;
-        $var = array(
-          $Um, $Um, $Um, $Um
-        );
         $manager = new VestibulumManager();
 
         $manager->scan($file);
