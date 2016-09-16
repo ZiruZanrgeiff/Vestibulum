@@ -263,6 +263,7 @@ return [
         'T_OPEN_TAG' => 'Vestibulum\Events\TOpenTagEvent',
         'T_CLASS'    => 'Vestibulum\Events\TClassEvent',
         'T_VAR'      => 'Vestibulum\Events\TVarEvent',
+        'T_CONST'    => 'Vestibulum\Events\TConstEvent',
     ]
 ]
 

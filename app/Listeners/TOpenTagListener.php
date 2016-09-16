@@ -3,15 +3,13 @@
 namespace Vestibulum\Listeners;
 
 use Vestibulum\Events\TOpenTagEvent;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Vestibulum\Helpers\Vestibulum\Standard\PSR2\OpenTag;
 
 class TOpenTagListener
 {
     public function handle(TOpenTagEvent $event)
     {
-        $currentLine = $event->currentLine + 1;
-
-        return "TOpenTagEvent called in line: {$currentLine}";
+        $standard = new OpenTag($event->currentLine, $event->sourceLines, $event->position);
+        return $standard->process();
     }
 }

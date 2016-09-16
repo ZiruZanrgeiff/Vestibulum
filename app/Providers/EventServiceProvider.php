@@ -24,6 +24,10 @@ class EventServiceProvider extends ServiceProvider
         'Vestibulum\Events\TVarEvent' => [
             'Vestibulum\Listeners\TVarListener',
         ],
+
+        'Vestibulum\Events\TConstEvent' => [
+            'Vestibulum\Listeners\TConstListener',
+        ],
     ];
 
     /**

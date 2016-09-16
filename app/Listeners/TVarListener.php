@@ -2,9 +2,7 @@
 
 namespace Vestibulum\Listeners;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Vestibulum\Events\TVarEvent;
-use Illuminate\Queue\InteractsWithQueue;
 use Vestibulum\Helpers\Vestibulum\Standard\PSR2\Variable;
 
 class TVarListener

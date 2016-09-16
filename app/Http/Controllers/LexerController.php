@@ -3,7 +3,6 @@
 namespace Vestibulum\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Storage;
 use Vestibulum\Helpers\Vestibulum\VestibulumManager;
 
@@ -19,7 +18,7 @@ class LexerController extends Controller
         $manager->scan($file);
 
         $manager->dispacthEvents();
-        return dd($manager->dispacthEvents());
+        return ($manager->dispacthEvents());
 
     }
 }

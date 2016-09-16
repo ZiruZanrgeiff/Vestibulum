@@ -158,6 +158,19 @@ class LexerResource
         return $this->lookahead !== null;
     }
 
+    public function nextResource()
+    {
+        $this->tokens = (isset($this->resoureTokens[++$this->currentLine]))
+            ? $this->resoureTokens[$this->currentLine] : null;
+
+        return $this->tokens !== null;
+    }
+
+    public function isWitheLine()
+    {
+        return (count($this->tokens) > 0) ? true: false;
+    }
+
     /**
      * Tells the lexer to skip input tokens until it sees a token with the given value.
      *

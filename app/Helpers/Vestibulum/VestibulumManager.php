@@ -65,7 +65,9 @@ class VestibulumManager
 
                 if (key_exists($tokens['type'], $events)) {
                     $ress = \Event::fire(new $events[$tokens['type']]($key, $tokens['position'], $this->sourceLines));
-                    $eventResponses[] = $ress;
+                    if(count($ress[0]) > 0){
+                        $eventResponses[] = $ress;
+                    }
                 }
             }
 
