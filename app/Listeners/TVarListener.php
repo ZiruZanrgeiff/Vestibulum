@@ -2,15 +2,16 @@
 
 namespace Vestibulum\Listeners;
 
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Vestibulum\Events\TVarEvent;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Vestibulum\Helpers\Vestibulum\Standard\PSR2\Variable;
 
 class TVarListener
 {
     public function handle(TVarEvent $event)
     {
-        $currentLine = $event->currentLine + 1;
-        return "TVarEvent called in line: {$currentLine}";
+        $standard = new Variable($event->currentLine, $event->sourceLines);
+        return $standard->process();
     }
 }

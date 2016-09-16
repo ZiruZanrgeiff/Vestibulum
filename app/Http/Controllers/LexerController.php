@@ -10,15 +10,20 @@ class LexerController extends Controller
 {
     public function index()
     {
-
+        $Tect = null;
         $file = file(__FILE__);
 
 
+        $Um = null;
+        $var = array(
+          $Um, $Um, $Um, $Um
+        );
         $manager = new VestibulumManager();
 
         $manager->scan($file);
 
-        dd([$manager->executionMessages,$manager->dispacthEvents()]);
+        $manager->dispacthEvents();
+        return dd($manager->dispacthEvents());
 
     }
 }

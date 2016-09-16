@@ -67,12 +67,17 @@ class VestibulumManager
 
                     $ress = \Event::fire(new $events[$tokens['type']]($key, $this->sourceLines));
 
-                    $eventResponses[] = $ress;
+                    if(is_array($ress[0])){
+                        foreach ($ress[0] as $item) {
+                            $eventResponses[] = $item;
+                        }
+                    }else{
+                        $eventResponses[] = $ress[0];
+                    }
                 }
             }
 
-
-        return $eventResponses;
+        return array_unique($eventResponses);
     }
 
     private function startExec()
