@@ -17,7 +17,7 @@ class TVarEvent
     {
         $this->currentLine = $currentLine;
         $this->sourceLines = $sourceLines;
-        $this->position = $position;
+        $this->position    = $position;
     }
 
     /**

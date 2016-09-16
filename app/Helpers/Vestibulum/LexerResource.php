@@ -166,9 +166,16 @@ class LexerResource
         return $this->tokens !== null;
     }
 
+    public function prevResource()
+    {
+        $this->tokens = (isset($this->resoureTokens[--$this->currentLine]))
+            ? $this->resoureTokens[$this->currentLine] : null;
+        return $this->tokens !== null;
+    }
+
     public function isWitheLine()
     {
-        return (count($this->tokens) > 0) ? true: false;
+        return (count($this->tokens) > 0) ? false: true;
     }
 
     /**
@@ -209,6 +216,11 @@ class LexerResource
         $peek = $this->peek();
         $this->peek = 0;
         return $peek;
+    }
+
+    public function getTokens()
+    {
+        return $this->tokens;
     }
 
 }

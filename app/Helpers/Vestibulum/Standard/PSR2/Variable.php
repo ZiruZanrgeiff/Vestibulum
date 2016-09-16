@@ -19,7 +19,7 @@ class Variable extends AbstractStandard
                 $this->getErrorMessage(
                     $lexer->getCurrentLine(),
                     $lexer->lookahead['position'],
-                    'The variables SHOULD not begin with uppercase letter.'
+                    'The variables SHOULD NOT begin with uppercase letter.'
                 );
         }
 
@@ -28,7 +28,7 @@ class Variable extends AbstractStandard
                 $this->getErrorMessage(
                     $lexer->getCurrentLine(),
                     $lexer->lookahead['position'],
-                    'The variables SHOULD not have underscore.'
+                    'The variables SHOULD NOT have underscore.'
                 );
         }
 

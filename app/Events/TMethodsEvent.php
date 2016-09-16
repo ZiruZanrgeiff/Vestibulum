@@ -9,7 +9,7 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class TClassEvent
+class TMethodsEvent
 {
     use InteractsWithSockets, SerializesModels;
 
@@ -18,7 +18,6 @@ class TClassEvent
         $this->currentLine = $currentLine;
         $this->sourceLines = $sourceLines;
         $this->position    = $position;
-
     }
 
     /**

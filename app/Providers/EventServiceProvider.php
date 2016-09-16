@@ -28,6 +28,10 @@ class EventServiceProvider extends ServiceProvider
         'Vestibulum\Events\TConstEvent' => [
             'Vestibulum\Listeners\TConstListener',
         ],
+
+        'Vestibulum\Events\TMethodsEvent' => [
+            'Vestibulum\Listeners\TMethodsListener',
+        ],
     ];
 
     /**
