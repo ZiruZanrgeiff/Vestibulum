@@ -13,8 +13,16 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Vestibulum\Events\SomeEvent' => [
-            'Vestibulum\Listeners\EventListener',
+        'Vestibulum\Events\TOpenTagEvent' => [
+            'Vestibulum\Listeners\TOpenTagListener',
+        ],
+
+        'Vestibulum\Events\TClassEvent' => [
+            'Vestibulum\Listeners\TClassListener',
+        ],
+
+        'Vestibulum\Events\TVarEvent' => [
+            'Vestibulum\Listeners\TVarListener',
         ],
     ];
 

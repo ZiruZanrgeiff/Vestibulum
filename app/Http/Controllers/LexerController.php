@@ -4,7 +4,7 @@ namespace Vestibulum\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Vestibulum\Helpers\Lexer;
+use Vestibulum\Helpers\VestibulumManager;
 
 class LexerController extends Controller
 {
@@ -13,13 +13,12 @@ class LexerController extends Controller
 
         $file = file(__FILE__);
 
-        $var = "text";
 
-        $lexer = new Lexer();
+        $manager = new VestibulumManager();
 
-        $result = $lexer->lscan($file);
+        $manager->scan($file);
 
+        dd([$manager->executionMessages,$manager->dispacthEvents()]);
 
-        return response()->json($result);
     }
 }

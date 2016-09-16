@@ -6,26 +6,6 @@ use Doctrine\Common\Lexer\AbstractLexer;
 
 class Lexer extends AbstractLexer
 {
-
-    public function lscan(array $source) {
-        $lines = array();
-
-        foreach($source as $number => $line) {
-            $tokens = array();
-            $this->setInput($line);
-
-            while($this->moveNext()){
-                if($this->lookahead['type'] !== 'Undefined'){
-                    $tokens[] = $this->lookahead;
-                }
-            }
-
-            $lines[] = $tokens;
-        }
-
-        return $lines;
-    }
-
     /**
      * Lexical catchable patterns.
      *

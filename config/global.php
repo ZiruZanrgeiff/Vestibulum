@@ -16,7 +16,10 @@ return [
         T_VARIABLE      => '\$' . $labelRegex,
         T_STRING        => '[\'|"]' . $labelRegex,
         'T_LITERAL'     => $labelRegex,
-
+        'T_OPEN_PARENTHESES'  =>'\(' ,
+        'T_CLOSE_PARENTHESES' => '\)',
+        'T_OPEN_KEYS'         =>'{'  ,
+        'T_CLOSE_KEYS'        =>'}'  ,
         // keywords
         T_NAMESPACE     => 'namespace\b',
         T_USE           => 'use\b',
@@ -79,7 +82,7 @@ return [
         T_PROTECTED     => 'protected\b'  ,
         T_PUBLIC        => 'public\b'  ,
         T_REQUIRE       => 'require\b',
-        T_REQUIRE_ONCE  =>'require_once\b' ,
+        T_REQUIRE_ONCE  => 'require_once\b' ,
         T_RETURN        => 'return\b' ,
         T_STATIC        => 'static\b'  ,
         T_SWITCH        => 'switch\b' ,
@@ -137,8 +140,12 @@ return [
 
     ],
 
-    'PHP_PARSER_TYPE_TOKENS' => [
+    'PHP_PARSER_TYPE_TOKENS'  => [
         '<?php'           => T_OPEN_TAG,
+        '('               => 'T_OPEN_PARENTHESES',
+        ')'               => 'T_CLOSE_PARENTHESES',
+        '{'               => 'T_OPEN_KEYS',
+        '}'               => 'T_CLOSE_KEYS',
         ' '               => T_WHITESPACE,
         'namespace'       => T_NAMESPACE,
         'variable'        => T_VARIABLE,
@@ -250,6 +257,12 @@ return [
         '>>'  => T_SR,
         '--'  => T_DEC,
         '++'  => T_INC,
+    ],
+
+    'PHP_PARSER_EVENTS_TOKENS' => [
+        'T_OPEN_TAG' => 'Vestibulum\Events\TOpenTagEvent',
+        'T_CLASS'    => 'Vestibulum\Events\TClassEvent',
+        'T_VAR'      => 'Vestibulum\Events\TVarEvent',
     ]
 ]
 
