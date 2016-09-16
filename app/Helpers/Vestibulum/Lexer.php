@@ -1,6 +1,6 @@
 <?php
 
-namespace Vestibulum\Helpers;
+namespace Vestibulum\Helpers\Vestibulum;
 
 use Doctrine\Common\Lexer\AbstractLexer;
 

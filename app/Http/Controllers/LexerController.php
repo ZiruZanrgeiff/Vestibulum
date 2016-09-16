@@ -4,7 +4,7 @@ namespace Vestibulum\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Vestibulum\Helpers\VestibulumManager;
+use Vestibulum\Helpers\Vestibulum\VestibulumManager;
 
 class LexerController extends Controller
 {

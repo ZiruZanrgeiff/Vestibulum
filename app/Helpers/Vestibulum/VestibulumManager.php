@@ -6,7 +6,7 @@
  * Time: 03:58
  */
 
-namespace Vestibulum\Helpers;
+namespace Vestibulum\Helpers\Vestibulum;
 
 
 class VestibulumManager
