@@ -100,7 +100,7 @@
     }
 
     span.variable.language.php-tag.animate {
-      display: block;
+      color: #815ba4;
     }
 
   </style>
