@@ -1,5 +1,4 @@
 <?php
-
 namespace Vestibulum\Events;
 
 use Illuminate\Broadcasting\Channel;
@@ -8,7 +7,6 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-
 class TClassEvent
 {
     use InteractsWithSockets, SerializesModels;

@@ -18,7 +18,7 @@ class LexerController extends Controller
         $manager->scan($file);
 
         $manager->dispacthEvents();
-        return ($manager->dispacthEvents());
+        return dd($manager->dispacthEvents());
 
     }
 }
